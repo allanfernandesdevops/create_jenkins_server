@@ -1,11 +1,12 @@
 resource "aws_instance" "jenkins" {
-  ami = "ami-0e472ba40eb589f49"
-  instance_type = "t2.micro"
-  security_groups = ["sg_jenkins"]
-  tags = {
-    Name = "jenkins-server"
+  ami                         = "ami-0e472ba40eb589f49"
+  instance_type               = "t2.micro"
+  security_groups             = ["sg_jenkins"]
+  associate_public_ip_address = true
+  tags                        = {
+    Name                      = "jenkins-server"
   }
-  key_name = "ubuntu"
+  key_name                    = "ubuntu"
 }
 
 resource "aws_key_pair" "jenkins" {
