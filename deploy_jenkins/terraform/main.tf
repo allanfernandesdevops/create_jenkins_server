@@ -28,3 +28,17 @@ resource "null_resource" "provision_jenkins" {
       working_dir = "../ansible"  
   }
 }
+
+resource "null_resource" "install_terraform" {
+  provisioner "local-exec" {
+      command     = "ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_terraform.yml"
+      working_dir = "../ansible"  
+  }
+}
+
+resource "null_resource" "install_ansible" {
+  provisioner "local-exec" {
+      command     = "ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_ansible.yml"
+      working_dir = "../ansible"  
+  }
+}

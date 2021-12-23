@@ -6,11 +6,10 @@
 
 - name: Download terraform archive Linux 64 bits
   get_url:
-    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    url: https://releases.hashicorp.com/terraform/{terraform_version}/terraform_{terraform_version}_linux_amd64.zip
     dest: /tmp/terraform-{{terraform_version}}.zip
 
-- name: Adding terraform command to user path
-  file: 
-    src: "{{terraform_dir}}/terraform"
+- name: Unarchive terraform binnary to user path
+  unarchive:
+    src: /tmp/terraform-{{terraform_version}}.zip
     dest: /usr/bin/terraform
-    state: link
