@@ -3,6 +3,14 @@
   remote_user: ubuntu
   become_user: root
   tasks:
+
+  - name: Install ansible dependencies
+    shell: apt-add-repository ppa:ansible/ansible -y
+
+  - name: Update system
+    shell: apt-get update
   
   - name: Install Ansible
-    include: ansible
+  apt:
+    name: ansible
+    state: present
