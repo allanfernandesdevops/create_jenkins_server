@@ -42,6 +42,11 @@
     lineinfile: path='{{ admin_file_name.files.0.path }}/config.xml' regexp='<passwordHash>' line='      <passwordHash>#jbcrypt:$2a$10$hWbMDOe5PieN1aXZQt6moOdUKiNhjYCi6WHpqDHZ7vIl9NY6MBGBu</passwordHash>'
     register: password
 
+  - name: Create Jobs
+    copy:
+      src: files/webservers
+      dest: /var/lib/jenkins/jobs
+
   - name: Restart jenkins service
     service: 
       name: jenkins

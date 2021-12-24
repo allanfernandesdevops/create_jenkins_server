@@ -1,0 +1,27 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>export AWS_ACCESS_KEY_ID=&quot;AKIA33MQIZ5KPHVMN23E&quot;
+export AWS_SECRET_ACCESS_KEY=&quot;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&quot;
+rm -rf *
+git clone https://github.com/gitarena/tis-automation-challenge.git
+cd tis-automation-challenge/deploy_webservers/terraform/
+terraform init &amp;&amp; terraform plan &amp;&amp; terraform apply --auto-approve</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
