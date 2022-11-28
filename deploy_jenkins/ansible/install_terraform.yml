@@ -9,7 +9,7 @@
   tasks:
 
   - name: Install unzip to unarchive terraform
-    package:
+    apt:
       name: unzip
       state: present
 

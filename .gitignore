@@ -1,0 +1,7 @@
+# DevOps Files
+*.hcl
+*.terraform
+.terraform/
+*.tfstate
+.terraform
+.terraform/

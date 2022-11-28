@@ -37,7 +37,7 @@ e executar o comando: `terraform init && terraform plan && terraform apply --aut
 Ao final da exeução do terraform será chamado um playbook do ansible que fará a configuração do servidor e seus jobs.
 ![enter image description here](https://lucid.app/publicSegments/view/d91b2c34-533d-47a2-95d7-1ea4d720f530/image.png)
 Após a execução do playbook do ansible será informado o nome DNS do servidor jenkins.
-O mesmo pode ser acessado via navegador com o nome_dns:8080
+O mesmo pode ser acessado via navegador com o endereço **nome_dns:8080**
 
 
 ### SOLUÇÃO WEBSERVER
