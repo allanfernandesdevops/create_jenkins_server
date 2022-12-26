@@ -44,8 +44,10 @@
 
   - name: Create Jobs
     copy:
-      src: files/webservers
-      dest: /var/lib/jenkins/jobs
+      src: files/config_jenkins/
+      dest: /var/lib/jenkins/jobs/
+      owner: jenkins
+      group: jenkins
 
   - name: Restart jenkins service
     service: 

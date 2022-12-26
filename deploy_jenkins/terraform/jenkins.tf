@@ -1,7 +1,7 @@
 resource "aws_instance" "jenkins" {
   ami                         = "ami-0e472ba40eb589f49"
   instance_type               = "t2.micro"
-  security_groups             = ["sg_jenkins"]
+  security_groups             = ["${aws_security_group.sg_jenkins_a.name}"]
 # associate_public_ip_address = true
   tags                        = {
     Name                      = "jenkins-server"

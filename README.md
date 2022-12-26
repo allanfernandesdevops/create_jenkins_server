@@ -6,14 +6,8 @@ Essa infra será composta de:
 
 - Dois servidores Linux t2.micro com Apache para hospedagem da página web **helloworld.html**
 
-- Dois servidores Windows com Apache, hospedando também a página web **helloworld.html**
+  A solução proposta foi a criação de um servidor Jenkins e a partir desse servidor Jenkins, será disparado a ação de criação de dois servers  linux (**hospedados na AWS**) com o apache instalado e com a página inicial de hello world configurada.
 
-- Uma página hospedada no bucket S3 da amazon utilizando um API Gateway para
-
-  
-  A solução proposta foi a criação de um servidor Jenkins e a partir desse servidor Jenkins, será disparado a ação de criação de dois servers windows e dois linux (**todos hospedados na AWS**) com o apache instalado e com a página inicial de hello world configurada conforme imagem abaixo.
-
-![enter image description here](https://lucid.app/publicSegments/view/b084cfd1-8d08-4a6b-93af-ecaf1d05f8cd/image.png)
 
 O repositório que realiza a criação do servidor jenkins é: https://github.com/gitarena/create_jenkins_server.git
 
@@ -32,10 +26,10 @@ Exportar as suas credenciais da AWS
     export AWS_SECRET_ACCESS_KEY="KXz2xxxxxxxxxxxxxxxxxxxxxxxx" 
 
 pelo terminal ir até a pasta `create_jenkins_server/deploy_jenkins/terraform/`
-e executar o comando: `terraform init && terraform plan && terraform apply --auto-approve`
+e executar o comando: `terraform init && terraform apply --auto-approve`
 
 Ao final da exeução do terraform será chamado um playbook do ansible que fará a configuração do servidor e seus jobs.
-![enter image description here](https://lucid.app/publicSegments/view/d91b2c34-533d-47a2-95d7-1ea4d720f530/image.png)
+
 Após a execução do playbook do ansible será informado o nome DNS do servidor jenkins.
 O mesmo pode ser acessado via navegador com o endereço **nome_dns:8080**
 
@@ -53,7 +47,7 @@ Exportar as suas credenciais da AWS
     export AWS_SECRET_ACCESS_KEY="KXz2xxxxxxxxxxxxxxxxxxxxxxxx" 
 
 ir até a pasta `tis-automation-challenge/deploy_webservers/terraform/`
-e executar o comando: `terraform init && terraform plan && terraform apply --auto-approve` e aguardar a execução.
+e executar o comando: `terraform init && terraform apply --auto-approve` e aguardar a execução.
 
 Ao final ele dará os nomes DNS dos 4 servidores criados.
 

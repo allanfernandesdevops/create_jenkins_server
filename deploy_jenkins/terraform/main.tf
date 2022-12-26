@@ -21,24 +21,26 @@ terraform{
     }
 }
 
-resource "null_resource" "provision_jenkins" {
-  depends_on      = [aws_instance.jenkins]
-  provisioner "local-exec" {
-      command     = "sleep 30 && ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_jenkins.yml"
-      working_dir = "../ansible"  
-  }
-}
-
 resource "null_resource" "install_terraform" {
+  depends_on      = [aws_instance.jenkins]
   provisioner "local-exec" {
       command     = "sleep 30 && ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_terraform.yml"
       working_dir = "../ansible"  
   }
 }
 
-resource "null_resource" "install_ansible" {
+resource "null_resource" "install_jenkins" {
+  depends_on      = [null_resource.install_terraform]
   provisioner "local-exec" {
-      command     = "sleep 30 && ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_ansible.yml"
+      command     = "sleep 10 && ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_jenkins.yml"
+      working_dir = "../ansible"  
+  }
+}
+
+resource "null_resource" "install_ansible" {
+  depends_on      = [null_resource.install_jenkins]
+  provisioner "local-exec" {
+      command     = "sleep 10 && ansible-playbook -i ${aws_instance.jenkins.public_dns}, install_ansible.yml"
       working_dir = "../ansible"  
   }
 }

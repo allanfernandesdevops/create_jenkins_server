@@ -1,7 +1,6 @@
-resource "aws_security_group" "sg_jenkins" {
-  name        = "sg_jenkins"
+resource "aws_security_group" "sg_jenkins_a" {
   description = "Allow all outbound traffic and inbound 22/80"
-
+  name = "sg_jenkins"
   ingress {
     from_port   = 22
     to_port     = 22
